@@ -2,7 +2,7 @@ import opc
 import time
 import random
 import colorsys
-#import numpy
+
 
 leds = [(0,0,0)]*360
 led = 0
