@@ -51,34 +51,38 @@ def clear():
 def blue(colour):
     for led in Blue:
         leds[led] = colour
-        time.sleep(0.02)
+        #time.sleep(0.02)
         client.put_pixels(leds)
 
 def red(colour):    
     for led in Red:
         leds[led] = colour
-        time.sleep(0.02)
+        #time.sleep(0.02)
         client.put_pixels(leds)
         
 def green(colour):
     for led in Green:
         leds[led] = colour
-        time.sleep(0.02)
+        #time.sleep(0.02)
         client.put_pixels(leds)
 
 #-------------------------------------------------------------
 
-blue(colourBlue)
-clear()
-colour(colourBlue)
-clear()
 red(colourRed)
+time.sleep(3)
 clear()
 colour(colourRed)
 clear()
 green(colourGreen)
+time.sleep(3)
 clear()
 colour(colourGreen)
 clear()
+blue(colourBlue)
+time.sleep(3)
+clear()
+colour(colourBlue)
+clear()
+
 
 
