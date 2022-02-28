@@ -15,6 +15,7 @@ FBuilding = [303,304,243,244,306,307,308,246,247,248,186,187,188,126,127,128,314
 #MBuilding = [309,310,249,250,189,190,121,318,319,320,258,259,260,198,199,200,325,265,205,145,144,143,334,335,336,274,275,276,340,341,280,281,162,163,102,103,352,292,232,172,171,170]
 BBuilding = [309,310,249,250,189,190,129,130,318,319,320,258,259,260,198,199,200,325,265,205,145,144,143,334,335,336,274,275,276,340,341,280,281,162,163,102,103,352,292,232,172,171,170, 301,302,241,242,181,182,183,121,122,123,305,245,185,68,69,70,311,313,251,252,253,316,317,256,257,321,261,201,141,142,81,82,329,269,209,332,333,272,273,337,277,341,281,164,165,346,347,286,287,353,354,293,294,233,234]
 Moon1 = [36, 37, 95, 96, 97, 98, 156, 157]
+StarsL = [33,57,2,39,6,12,29,27,19,15,22,111,105,86,73,64,65,78,84,100,109,167,173,178,131,120,137,148,214,206,226,239]
 TS = [2,5,6,12,15,22,19,27,29,39,42,57,33]
 
 client = opc.Client('localhost:7890')
@@ -52,70 +53,134 @@ def Moon ():
         time.sleep(0.02)
         client.put_pixels(leds)
 
-def FStars ():
-    for led in TS:
-        leds[led] = (ColourW)
-        time.sleep(0.02)
+def Stars ():
+    for led in StarsL:
+        leds[led] = (255,255,153)
+        time.sleep(0.1)
         client.put_pixels(leds)
         
 
+#while led < 360:# blinking stars
+def Twinkle():
+    while True: #for led in range(360):#range (369):
+        for led in StarsL:
+            leds[led] = (225,225,153)
+        time.sleep(.2)
+        client.put_pixels(leds)
+        for led in StarsL:
+            leds[led] = (0,0,0)
+        time.sleep(.2)
+        client.put_pixels(leds)
+        break
+##            leds [2] = (255,255,153) 
+##            leds [5] = (255,255,153)
+##            leds [6] = (255,255,153)
+##            leds [12] = (255,255,153)
+##            leds [15] = (255,255,153)
+##            leds [22] = (255,255,153)
+##            leds [19] = (255,255,153)
+##            leds [27] = (255,255,153)
+##            leds [29] = (255,255,153)
+##            leds [39] = (255,255,153)
+##            leds [42] = (255,255,153)
+##            leds [57] = (255,255,153)
+##            leds [33] = (255,255,153)
+##            time.sleep(.2)
+##            client.put_pixels(leds)
+##
+##            leds [64] = (255,255,153) 
+##            leds [66] = (255,255,153)
+##            leds [73] = (255,255,153)
+##            leds [78] = (255,255,153)
+##            leds [84] = (255,255,153)
+##            leds [86] = (255,255,153)
+##            leds [100] = (255,255,153)
+##            leds [105] = (255,255,153)
+##            leds [109] = (255,255,153)
+##            leds [111] = (255,255,153)
+##            time.sleep(1)
+##            client.put_pixels(leds)
+##            
+##
+##            leds [120] = (255,255,153) 
+##            leds [131] = (255,255,153)
+##            leds [137] = (255,255,153)
+##            leds [148] = (255,255,153)
+##            leds [152] = (255,255,153)
+##            leds [167] = (255,255,153)
+##            leds [173] = (255,255,153)
+##            leds [178] = (255,255,153)
+##            time.sleep(.8)
+##            client.put_pixels(leds)
+##                
+##            leds [206] = (255,255,153) 
+##            leds [214] = (255,255,153)
+##            leds [226] = (255,255,153)
+##            leds [239] = (255,255,153)
+##            time.sleep(.5)
+##            client.put_pixels(leds)
+
+def BlinkStars(TS):
+    #while True:
+        if led in Stars == 59:
+            leds [2] = (225,225,153)
+            time.sleep(1)
+            client.put_pixels(leds)
+            leds[2] = (0,0,0)
+            time.sleep(1)
+            client.put_pixels(leds)
+            
+        if led in Stars == 119:
+            leds[led-90] = (0,0,0)
+            time.sleep(0.1)
+            client.put_pixels(leds)
+        if led in Stars == 239:
+            leds[led-150] = (0,0,0)
+            time.sleep(0.1)
+            client.put_pixels(leds)
+        if led in Stars == 359:
+            leds[led-210] = (0,0,0)
+            time.sleep(0.1)
+            client.put_pixels(leds)
+                #time.sleep(5)
+            
 Moon ()
 FrontB ()
 #MidB ()
 BackB ()
+Stars()
+Twinkle()
+Twinkle()
+Twinkle()
+Twinkle()
 
-#while led < 360:# blinking stars
-for led in range(360):#range (369):
 
-        leds [2] = (255,255,153)
-        leds [5] = (255,255,153)
-        leds [6] = (255,255,153)
-        leds [12] = (255,255,153)
-        leds [15] = (255,255,153)
-        leds [22] = (255,255,153)
-        leds [19] = (255,255,153)
-        leds [27] = (255,255,153)
-        leds [29] = (255,255,153)
-        leds [39] = (255,255,153)
-        leds [42] = (255,255,153)
-        leds [57] = (255,255,153)
-        leds [33] = (255,255,153)
-        time.sleep(.2)
-        client.put_pixels(leds)
 
-        leds [64] = (255,255,153)
-        leds [66] = (255,255,153)
-        leds [73] = (255,255,153)
-        leds [78] = (255,255,153)
-        leds [84] = (255,255,153)
-        leds [86] = (255,255,153)
-        leds [100] = (255,255,153)
-        leds [105] = (255,255,153)
-        leds [109] = (255,255,153)
-        leds [111] = (255,255,153)
-        time.sleep(1)
-        client.put_pixels(leds)
-    
 
-        leds [120] = (255,255,153)
-        leds [131] = (255,255,153)
-        leds [137] = (255,255,153)
-        leds [148] = (255,255,153)
-        leds [152] = (255,255,153)
-        leds [167] = (255,255,153)
-        leds [173] = (255,255,153)
-        leds [178] = (255,255,153)
-        time.sleep(.8)
-        client.put_pixels(leds)
-        
-        leds [206] = (255,255,153)
-        leds [214] = (255,255,153)
-        leds [226] = (255,255,153)
-        leds [239] = (255,255,153)
-        time.sleep(.5)
-        client.put_pixels(leds)
-        time.sleep(5)
-        break
+
+
+##for led in TS:
+##    leds[led] = (0,0,0)
+##    client.put_pixels(leds)
+##        
+##    for led in range (360):
+##            if led in Transition == 59:
+##                leds[led] = (0,0,0)
+##                #time.sleep(0.1)
+##                client.put_pixels(leds)
+##            if led in Transition == 119:
+##                leds[led] = (0,0,0)
+##                #time.sleep(0.1)
+##                client.put_pixels(leds)
+##            if led in Transition == 239:
+##                leds[led] = (0,0,0)
+##                #time.sleep(0.1)
+##                client.put_pixels(leds)
+##            if led in Transition == 359:
+##                leds[led] = (0,0,0)
+##                #time.sleep(0.1)
+##                client.put_pixels(leds)
+##    #break
 
 leds = [(0,0,0)]*360
 client.put_pixels(leds)
@@ -123,13 +188,18 @@ client.put_pixels(leds)
 
 
 #travel code
-def ManMove ():
+def PlaneFly ():
     for led in range (48): #(59):
         leds = [(0,0,0)]*360
 ##        leds[20-led] = (255,255,255)
 ##        leds[21-led] = (255,255,255)
 ##        leds[22-led] = (255,255,255)
-
+        leds[225-led] = 200,200,200) #in process of creating objects to transition
+        leds[226-led]
+        leds[167-led]
+        leds[227-led]
+        leds[287-led]
+        
         leds[80-30-led] = (255,255,255)
         leds[81-30-led] = (255,255,255)
         leds[82-30-led] = (255,255,255)
@@ -178,29 +248,30 @@ def Drift():
 
 def Move (): #transition curtains
     for led in Transition:
-        leds[led] = (ColourW)
-        time.sleep(0.8)
+        leds[led] = (0,0,0)
         client.put_pixels(leds)
 
-        if led in Transition == 59:
-            leds[led] = (ColourG2)
-            time.sleep(0.8)
-            client.put_pixels(leds)
-        if led in Transition == 119:
-            leds[led] = (ColourG2)
-            time.sleep(0.8)
-            client.put_pixels(leds)
-        if led in Transition == 239:
-            leds[led] = (ColourG2)
-            time.sleep(0.8)
-            client.put_pixels(leds)
-        if led in Transition == 359:
-            leds[led] = (ColourG2)
-            time.sleep(0.8)
-            client.put_pixels(leds)
+
+        for led in range (30):
+            if led in Transition == 59:
+                leds[led] = (0,0,0)
+                #time.sleep(0.1)
+                client.put_pixels(leds)
+            if led in Transition == 119:
+                leds[led-90] = (0,0,0)
+                #time.sleep(0.1)
+                client.put_pixels(leds)
+            if led in Transition == 239:
+                leds[led-150] = (0,0,0)
+                #time.sleep(0.1)
+                client.put_pixels(leds)
+            if led in Transition == 359:
+                leds[led-210] = (0,0,0)
+                #time.sleep(0.1)
+                client.put_pixels(leds)
             
-        else:
-            for led in range (30):
+        #else:
+        for led in range (30):
                 leds[led-30] = ColourG2
                 leds[led-90] = ColourG2
                 leds[led-150] = ColourG2
@@ -213,8 +284,11 @@ def Move (): #transition curtains
                 leds[209-led] = ColourG2
                 leds[269-led] = ColourG2
                 leds[329-led] = ColourG2
-                time.sleep(.5)
+                time.sleep(.1)
                 client.put_pixels(leds)
+
+                
+        
 
 ##                leds[59-led] = ColourW
 ##                leds[119-led] = ColourW
