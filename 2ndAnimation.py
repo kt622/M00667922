@@ -501,7 +501,7 @@ def ColourShow():
 #ColourWord = Button(window, text = "R,G,B", command = ColourWord).grid(row = 2, column = 0)
 #ColourShow = Button(window, text = "Colour Show", command = ColourShow).grid(row = 3, column = 0)
 
-
+#assigning buttons
 Guide = Label(window, text = "Click below to: ", width = 40, height = 2).grid(row = 1, column = 0)
 
 Button1 = Button(window, text = "See RGB Colours", command = RGBcolours).grid(row = 2, column = 0)
