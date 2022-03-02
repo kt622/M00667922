@@ -31,9 +31,7 @@ Blue = [3, 63, 123,183,243,303,304,305,306,246,247,186,187,124,125,66,67,6,5,4,9
 Red = [3,4,63,64,123,124,183,184,243,244,303,304,5,6,7,8,9,10,69,70,128,127,126,125,186,187,247,248,308,309,14,15,16,17,18,19,20,74,75,76,77,78,79,80,134,135,194,195,196,197,198,199,200,254,255,314,315,316,317,318,319,320,25,85,26,86,145,146,205,206,265,266,325,326,27,28,29,30,87,88,89,90,91,92,151,152,153,211,212,213,271,270,330,269,329,268,328,329,267,327]
 Green = [2,3,62,63,122,123,182,183,242,243,302,303,4,5,6,7,8,9,67,68,69,304,305,306,307,308,309,249,248,189,188,187,186,12,13,72,73,132,133,192,193,252,253,312,313,14,74,15,75,16,76,17,77,78,138,198,197,196,195,194,256,257,317,318,21,81,22,82,23,83,24,84,25,85,26,86,27,87,141,142,201,202,203,204,205,206,207,261,262,321,322,323,324,325,326,327,30,90,31,91,32,92,33,93,34,94,35,95,36,96,150,151,210,211,212,213,214,215,216,270,271,330,331,332,333,334,335,336,339,340,279,280,219,220,159,160,99,100,39,40,41,101,42,102,162,163,222,223,283,284,343,344,345,346,285,286,225,226,165,166,105,106,45,46]
 
-
-
-
+#------------------SomeDefinedColours------------------#
 ColourW = (225,225,153)
 ColourB = (54,69,79)
 ColourG1 = (180,180,180)
@@ -98,8 +96,8 @@ def Moon ():
 
 def Sun ():
     for led in Circle:
-        leds[10+led-1] = (255,100,0)
-        time.sleep(0.2)
+        leds[10+led-1] = (255,50,0)
+        #time.sleep(0.2)
         client.put_pixels(leds)
 
 def Stars ():
@@ -311,9 +309,13 @@ v = 1.0 #max bightness
 StartOfHue = 219 #value of colour
 
 def Sea():
-    for x in range(4):
-        for hue in range (120,300,1): #for 
-            rgb_fraction = colorsys.hsv_to_rgb(hue/30.0, s, v)
+    for led in range(180,360,1):
+        leds[led] = (0,0,255)
+    client.put_pixels(leds)
+    time.sleep(.01)
+    for x in range(2):
+        for hue in range (180,360,1): #for 
+            rgb_fraction = colorsys.hsv_to_rgb(hue/13.0, s, v)
             r = rgb_fraction[2] #extract said floating point numbers
             g = rgb_fraction[1]
             b = rgb_fraction[0]
@@ -321,7 +323,43 @@ def Sea():
             rgb = (r, g, b*255)
             leds[hue] = rgb
             client.put_pixels(leds)
-            time.sleep(.1)
+            time.sleep(.05)
+        for led in range(180,360,1):
+            leds[led] = (0,0,255)
+        client.put_pixels(leds)
+        time.sleep(.01)
+            
+            
+def Sand():
+    for led in range (120,180,1):
+        leds[led] = (152,118,84)
+    client.put_pixels(leds)
+    time.sleep(.01)
+
+def Sand2Sun():
+    for led in range(120,180,1):
+        leds[led] = (0,0,0)
+    client.put_pixels(leds)
+    time.sleep(.01)
+                     
+    Sun()
+    for led in range (180,240,1):
+        leds[led] = (152,118,84)
+    client.put_pixels(leds)
+    time.sleep(.01)
+
+def Cloud():
+    for x in range(3):
+        for led in range(6,13,1):
+            leds[led] = (225,225,225)
+        client.put_pixels(leds)
+        for led in range(65,74,1):
+            leds[led] = (225,225,225)
+        client.put_pixels(leds)
+        for led in range(126,133,1):
+            leds[led] = (225,225,225)
+        client.put_pixels(leds)
+
 
 def Rainbow ():
     for x in range (0,360,1): #for 
@@ -362,6 +400,7 @@ def Rainbow ():
 
 #def for rbg to run all at once
 def RGBcolours():
+    clear()
     red(colourRed)
     time.sleep(3)
     clear()
@@ -378,7 +417,31 @@ def RGBcolours():
     colour(colourBlue)
     clear()
     Rainbow()
-    info = Label(window, text = "RGB means, Red, Green, Blue!").grid(row = 5, column = 0)
+    info = Label(window, text = "RGB means, Red, Green, Blue! All together it makes a rainbow!").grid(row = 5, column = 0)
+
+def FlyingtoCity():
+    PlaneFly()
+    Moon ()
+    FrontB ()
+    BackB ()
+    Stars()
+    Twinkle()
+    Twinkle()
+    Twinkle()
+    Twinkle()
+    Stars()
+    info1 = Label(window, text = "You arrived at a city, it's nighttime but look at that view!").grid(row = 5, column = 0)
+
+def SailingtoBeach():
+    Boat()
+    Sun()
+    Sand()
+    Sea()
+    Sand2Sun()
+    Cloud()
+    Sun()
+    info2 = Label(window, text = "You sailed by a beach! It's a shame there's no sunset").grid(row = 5, column = 0)
+    
 
 #-----------------------CallingFunctions-------------------#
 
@@ -443,9 +506,11 @@ Guide = Label(window, text = "Click below to: ", width = 40, height = 2).grid(ro
 
 Button1 = Button(window, text = "See RGB Colours", command = RGBcolours).grid(row = 2, column = 0)
 
-Button2 = Button(window, text = "To Travel!").grid(row = 3, column = 0)
+Button2 = Button(window, text = "Trave by Plane?", command = FlyingtoCity).grid(row = 3, column = 0)
 
-Button3 = Button(window, text = "Something Spookie?").grid(row = 4, column = 0)
+Button2 = Button(window, text = "Trave by Boat?", command = SailingtoBeach).grid(row = 4, column = 0)
+
+Button3 = Button(window, text = "Something Spookie?").grid(row = 5, column = 0)
 
 window.mainloop()
 
