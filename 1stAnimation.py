@@ -21,20 +21,8 @@ colourBlue = (0,0,225)
 colourRed = (255,0,0)
 colourGreen = (0,255,0)
 
-##def moveR(colour):
-##    current = colour
-##    for x in range(57):
-##        if x == 59:
-##            break
-##        elif x == 119:
-##            break
-##        elif x == 239:
-##            break
-##        elif x == 359:
-##            break
-##        else:
-##            x = x-1
-##        return current
+s = 1.0 #max colour
+v = 1.0 #max bightness
 
 def colour(colour):
     for led in All:
@@ -66,6 +54,18 @@ def green(colour):
         #time.sleep(0.02)
         client.put_pixels(leds)
 
+def Rainbow ():
+    for x in range (0,360,1): #for 
+            rgb_fraction = colorsys.hsv_to_rgb(x/360.0, s, v)
+            r = rgb_fraction[0] #extract said floating point numbers
+            g = rgb_fraction[1]
+            b = rgb_fraction[2]
+
+            rgb = (r*255, g*255, b*255)
+            leds[x] = rgb
+            client.put_pixels(leds)
+            time.sleep(.01)
+
 #-------------------------------------------------------------
 
 red(colourRed)
@@ -83,6 +83,6 @@ time.sleep(3)
 clear()
 colour(colourBlue)
 clear()
-
+Rainbow()
 
 

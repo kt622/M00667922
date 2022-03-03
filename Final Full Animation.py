@@ -556,16 +556,6 @@ window.title('Animation Window')
 
 User = Label(window, text = "Click Button").grid(row = 1, column = 0)
 
-def ColourWord():
-    import Ani1
- 
-def ColourShow():
-    import Ani2
-
-
-#ColourWord = Button(window, text = "R,G,B", command = ColourWord).grid(row = 2, column = 0)
-#ColourShow = Button(window, text = "Colour Show", command = ColourShow).grid(row = 3, column = 0)
-
 #assigning buttons
 Guide = Label(window, text = "Click below to: ", width = 40, height = 2).grid(row = 1, column = 0)
 
@@ -574,10 +564,6 @@ Button1 = Button(window, text = "See RGB Colours", command = RGBcolours).grid(ro
 Button2 = Button(window, text = "Trave by Plane?", command = FlyingtoCity).grid(row = 3, column = 0)
 
 Button2 = Button(window, text = "Trave by Boat?", command = SailingtoBeach).grid(row = 4, column = 0)
-
-Button3 = Button(window, text = "Something Spookie?").grid(row = 5, column = 0)
-
-
 
 window.mainloop()
 
