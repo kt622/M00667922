@@ -1,7 +1,6 @@
-#senary code
 import opc
 import time
-import random
+#import random
 import colorsys
 import tkinter as tk
 from tkinter import *
@@ -30,6 +29,7 @@ Red = [3,4,63,64,123,124,183,184,243,244,303,304,5,6,7,8,9,10,69,70,128,127,126,
 Green = [2,3,62,63,122,123,182,183,242,243,302,303,4,5,6,7,8,9,67,68,69,304,305,306,307,308,309,249,248,189,188,187,186,12,13,72,73,132,133,192,193,252,253,312,313,14,74,15,75,16,76,17,77,78,138,198,197,196,195,194,256,257,317,318,21,81,22,82,23,83,24,84,25,85,26,86,27,87,141,142,201,202,203,204,205,206,207,261,262,321,322,323,324,325,326,327,30,90,31,91,32,92,33,93,34,94,35,95,36,96,150,151,210,211,212,213,214,215,216,270,271,330,331,332,333,334,335,336,339,340,279,280,219,220,159,160,99,100,39,40,41,101,42,102,162,163,222,223,283,284,343,344,345,346,285,286,225,226,165,166,105,106,45,46]
 
 #------------------SomeDefinedColours------------------#
+
 ColourW = (225,225,153)
 ColourB = (54,69,79)
 ColourG1 = (180,180,180)
@@ -46,7 +46,6 @@ def colour(colour):
         time.sleep(0.05)
         client.put_pixels(leds)
         
-        
 
 def ClearAll():
     leds = [(0,0,0)]*360
@@ -60,14 +59,12 @@ def clear():
         client.put_pixels(leds)
         
         
-
 def blue(colour):
     for led in Blue:
         leds[led] = colour
         time.sleep(0.02)
         client.put_pixels(leds)
         
-        #ClearAll()
 
 def red(colour):    
     for led in Red:
@@ -83,8 +80,6 @@ def green(colour):
         client.put_pixels(leds)
         
 
-
-#Views
 def FrontB ():
     for led in FBuilding:
         leds[led] = ColourG1
@@ -99,7 +94,6 @@ def BackB ():
         time.sleep(0.02)
         client.put_pixels(leds)
         
-    
 
 def Moon ():
     for led in Circle:
@@ -112,7 +106,6 @@ def Moon ():
 def Sun ():
     for led in Circle:
         leds[10+led-1] = (255,50,0)
-        #time.sleep(0.2)
         client.put_pixels(leds)
         
 
@@ -138,7 +131,6 @@ def Twinkle():
 
 
 def BlinkStars(TS):
-    #while True:
         if led in Stars == 59:
             leds [2] = (225,225,153)
             time.sleep(1)
@@ -159,7 +151,6 @@ def BlinkStars(TS):
             leds[led-210] = (0,0,0)
             time.sleep(0.1)
             client.put_pixels(leds)
-                #time.sleep(5)
             
 
 def PlaneFly (): #difined plane object flying from left to right of the screen 
@@ -234,7 +225,7 @@ def Boat():
 def Ghost(): #defined ghost object traveling from 
     for led in range (48):
         leds = [(0,0,0)]*360
-        #ghost
+        
         leds[80-30-led] = (255,255,255)
         leds[81-30-led] = (255,255,255)
         leds[82-30-led] = (255,255,255)
@@ -272,16 +263,6 @@ def Ghost(): #defined ghost object traveling from
         client.put_pixels(leds)
         time.sleep(.1)
         
-    #if led in ManMove >= Transition:
-        #leds[led] = leds
-        #client.put_pixels(leds)
-        #time.sleep(.1)
-
-def Drift():
-    for led in Transition:
-        leds[led] = (225,225,225)
-        #time.sleep(0.8)
-        client.put_pixels(leds)
 
 def Cutrains (): #transition curtains
     for led in Transition:
@@ -307,7 +288,6 @@ def Cutrains (): #transition curtains
                 #time.sleep(0.1)
                 client.put_pixels(leds)
             
-        #else:
         for led in range (30):
                 leds[led-30] = ColourG2
                 leds[led-90] = ColourG2
@@ -324,9 +304,9 @@ def Cutrains (): #transition curtains
                 time.sleep(.1)
                 client.put_pixels(leds)
 
+
 s = 1.0 #max colour
 v = 1.0 #max bightness
-StartOfHue = 219 #value of colour
 
 def Sea():
     for led in range(180,360,1):
@@ -385,7 +365,7 @@ def Cloud():
 
 
 def Rainbow ():
-    for x in range (0,360,1): #for 
+    for x in range (0,360,1):
             rgb_fraction = colorsys.hsv_to_rgb(x/360.0, s, v)
             r = rgb_fraction[0] #extract said floating point numbers
             g = rgb_fraction[1]
@@ -395,7 +375,6 @@ def Rainbow ():
             leds[x] = rgb
             client.put_pixels(leds)
             time.sleep(.01)
-            #ClearAll()
             
 
 #def for rbg to run all at once
@@ -403,58 +382,37 @@ def RGBcolours():
     for led in range(360):
         ClearAll()
         leds = [(0,0,0)]*360
-        #clear()
         red(colourRed)
         time.sleep(2)
-        #leds = [(0,0,0)]*360
-        #ClearAll()
         clear()
         colour(colourRed)
-        #ClearAll()
         clear()
-        #leds = [(0,0,0)]*360
         green(colourGreen)
         time.sleep(3)
-        #ClearAll()
         clear()
         colour(colourGreen)
-        #ClearAll()
         clear()
-        #leds = [(0,0,0)]*360
         blue(colourBlue)
         time.sleep(3)
-        #ClearAll()
         clear()
-        #leds = [(0,0,0)]*360
         colour(colourBlue)
-        #ClearAll()
         clear()
-        #leds = [(0,0,0)]*360
-        #Rainbow()
-        #time.sleep(3)
-        #leds = [(0,0,0)]*360
-
         Rainbow()
         time.sleep(3)
         clear()
         info = Label(window, text = "RGB means, Red, Green, Blue! All together it makes a rainbow!").grid(row = 6, column = 0)
         break
-    #Rainbow()
-
   
-    
+#def for flying and city scene    
 def FlyingtoCity():
     for led in range (360):
         ClearAll()
         PlaneFly()
-        #print("Lets Travel!")
-        #ClearAll()
         Moon ()
         FrontB ()
         BackB ()
         
         Stars()
-        #print("You arrived at a city!")
         Twinkle()
         Twinkle()
         Twinkle()
@@ -464,10 +422,9 @@ def FlyingtoCity():
         time.sleep(3)
         ClearAll()
         info1 = Label(window, text = "You arrived at a city, it's nighttime but look at that view!").grid(row = 6, column = 0)
-        #ClearAll()
         break
   
-    
+#def for sailing and beach scene
 def SailingtoBeach():
     for led in range (360):
         ClearAll()
@@ -486,71 +443,8 @@ def SailingtoBeach():
         ClearAll()
         info2 = Label(window, text = "You sailed by a beach! It's a shame there's no sunset").grid(row = 6, column = 0)
         break
-        #ClearAll()
-        
-    
-
-
-#-----------------------CallingFunctions-------------------#
-
-##print("RGB stands for red, green, blue!")
-##red(colourRed)
-##time.sleep(3)
-##clear()
-##colour(colourRed)
-##clear()
-##green(colourGreen)
-##clear()
-##colour(colourGreen)
-##clear()
-##blue(colourBlue)
-##clear()
-##colour(colourBlue)
-##clear()
-##print("Together, the colours make a rainbow.")
-##Rainbow()
-##leds = [(0,0,0)]*360
-##client.put_pixels(leds)
-##time.sleep(5)
-##PlaneFly() 
-##Moon ()
-##FrontB ()
-##BackB ()
-##Stars()
-##Twinkle()
-##Twinkle()
-##Twinkle()
-##Twinkle()
-
-
-##PlaneFly()
-##Drift()
-##Curtains()
-##Boat()
-##Beach()
-
-#Sea()
-#Sun()
-
-##print("Lets Travel!")
-##FlyingtoCity()
-##print("You arrived at a city!")
-##print("-----------------------")
-##print("Lets travel some more, this time by boat!")
-##SailingtoBeach()
-##print("You passed by a beach!")
-##print("-----------------------")
-##print("Now use the button provided to know what colours are used to create these images!")
-##
-
-
 
 #-----------------------------WindowBox------------------#
-
-
-
-
-
 
 window.title('Animation Window')
 
